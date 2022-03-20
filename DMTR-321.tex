@@ -31,7 +31,7 @@
 
 \title{LDM-503-15a: Science Pipelines Fall 2021 Release Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
-\date{ 2021-11-02 }
+\date{ 2022-03-20 }
 \author{ Yusra AlSayyad }
 
 \input{history_and_info.tex}
@@ -201,7 +201,7 @@ Yusra AlSayyad }
 } \\\hline
 \textbf{Test Cases} & \textbf{Assigned to} & \textbf{Executed by} & \textbf{Additional Test Personnel} \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T362}{LVV-T362}
-& {\small Yusra AlSayyad } & {\small  } &
+& {\small Yusra AlSayyad } & {\small Yusra AlSayyad } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -209,7 +209,7 @@ Yusra AlSayyad }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1601}{LVV-T1601}
-& {\small Yusra AlSayyad } & {\small  } &
+& {\small Yusra AlSayyad } & {\small Yusra AlSayyad } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -217,7 +217,7 @@ Yusra AlSayyad }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T363}{LVV-T363}
-& {\small Yusra AlSayyad } & {\small  } &
+& {\small Yusra AlSayyad } & {\small Yusra AlSayyad } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -241,11 +241,11 @@ Yusra AlSayyad }
 \multicolumn{2}{r}{ T. Plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P92}{LVV-P92}:} &
 \multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-15a: Science Pipelines Fall 2021 Release }} & Approved \\\hline
 \multicolumn{2}{r}{ T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C183}{LVV-C183}:} &
-\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-15a: Science Pipelines Fall 2021 Release }} & Not Executed \\\hline
+\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-15a: Science Pipelines Fall 2021 Release }} & Done \\\hline
 \textbf{Test Cases} &  \textbf{Ver.} & \textbf{Status} & \textbf{Comment} & \textbf{Issues} \\\toprule
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T362}{LVV-T362}
 &  1
-& Not Executed &
+& Pass w/ Deviation &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -254,7 +254,7 @@ Yusra AlSayyad }
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1601}{LVV-T1601}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -263,7 +263,7 @@ Yusra AlSayyad }
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T363}{LVV-T363}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -294,7 +294,7 @@ No recommendations beyond the tickets filed
 Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C183}{LDM-503-15a: Science Pipelines Fall 2021 Release}} in Jira.
 
 Test Cycle name: LDM-503-15a: Science Pipelines Fall 2021 Release\\
-Status: Not Executed
+Status: Done
 
 This test cycle describes tests performed on the Science Pipelines Fall
 2020 (v21.0.0) release, ensuring that the release is properly
@@ -357,7 +357,7 @@ single ``meta-package'', lsst\_distrib.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass w/ Deviation }
 
 Final comment:\\
 
@@ -366,7 +366,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass w/ Deviation } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -386,11 +386,47 @@ confirm the successful installation of the Science Pipelines.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+The Science Pipelines were installed on the shared server
+lsst-devl01.ncsa.illinois.edu which is running CentOS 7.9.2009, using
+the procedure described in
+https://pipelines.lsst.io/install/newinstall.html\\[2\baselineskip]Following
+the instructions in step 2 and 3, I made an installation directory and
+ran newinstall.sh:\\
+
+\begin{verbatim}
+mkdir -p lsst_stack
+cd lsst_stack
+curl -OL https://raw.githubusercontent.com/lsst/lsst/23.0.0/scripts/newinstall.sh
+bash newinstall.sh -ct
+\end{verbatim}
+
+answering `'yes'' when prompted to install
+miniconda:\\[2\baselineskip]\textgreater{} Would you like us to install
+Miniconda distribution (if unsure, say yes)?yes\\
+The conda environment takes long time to solve, and I lost patience
+after couple hours. I used the recommended newinstall version on
+community announcement
+(https://community.lsst.org/t/science-pipelines-release-23-0-0-now-available/6186)
+which uses mamba and takes a couple minutes. This version of newinstall
+will be the default on v23.0.1.\\
+Instructions for the new installation tool, lsstinstall, have been added
+to the v23.0.1 release candidate.\\[2\baselineskip]Then following step
+4, I installed the Science Pipelines:\\
+
+\begin{verbatim}
+source loadLSST.bash # for bash
+eups distrib install -t v23_0_0 lsst_distrib
+\end{verbatim}
+
+\begin{verbatim}
+curl -sSL https://raw.githubusercontent.com/lsst/shebangtron/master/shebangtron | python
+setup lsst_distrib
+\end{verbatim}
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 2 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -412,11 +448,17 @@ correct version of the codebase has been installed.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+\begin{verbatim}
+(lsst-scipipe-0.7.0) [yusra@lsst-devl01 lsst_stack]$ source loadLSST.bash 
+(lsst-scipipe-0.7.0) [yusra@lsst-devl01 lsst_stack]$ setup lsst_distrib
+(lsst-scipipe-0.7.0) [yusra@lsst-devl01 lsst_stack]$ eups list -s lsst_distrib
+   23.0.0+e2b4167800    current v23_0_0 setup
+\end{verbatim}
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 3 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 3 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -435,11 +477,16 @@ Depends on the tool selected by the user for downloading.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+\begin{verbatim}
+(lsst-scipipe-0.7.0) [yusra@lsst-devl01 lsst_stack]$ git clone  https://github.com/lsst/pipelines_check
+(lsst-scipipe-0.7.0) [yusra@lsst-devl01 lsst_stack]$ cd pipelines_check
+(lsst-scipipe-0.7.0) [yusra@lsst-devl01 pipelines_check]$ git checkout 23.0.0
+\end{verbatim}
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 4 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 4 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -456,11 +503,12 @@ availability of the stack demo source.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+Stack demo source is available
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 5 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 5 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -477,6 +525,22 @@ Successful execution will result in the string ``Ok'' being returned.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+\begin{verbatim}
+(lsst-scipipe-0.7.0) [yusra@lsst-devl01 pipelines_check]$ ./bin/run_demo.sh
+
++ '[' '!' -f DATA_REPO/butler.yaml ']'
++ butler create --seed-config /project/yusra/LVV-T362/lsst_stack/pipelines_check/configs/butler-seed.yaml DATA_REPO
++ butler register-instrument DATA_REPO lsst.obs.subaru.HyperSuprimeCam
+
+<snip>
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=================================================================== 4 passed, 3 warnings in 2.67s ===================================================================
+(lsst-scipipe-0.7.0) [yusra@lsst-devl01 pipelines_check]$ 
+\end{verbatim}
+
+The pipelines check demo completed and all tests
+passed.~\\[5\baselineskip]
 
 }
 
@@ -492,7 +556,7 @@ is available for use in a ``shared stack'' on developer infrastructure.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -501,7 +565,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -529,11 +593,21 @@ using shared infrastructure.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+\begin{itemize}
+\tightlist
+\item
+  Instructions for logging into the head nodes lsst-devl0* at the NCSA
+  development cluster are available at
+  https://developer.lsst.io/services/lsst-login.html
+\item
+  Instructions for accessing the shared stack are available at
+  https://developer.lsst.io/services/software.html\#software-stack
+\end{itemize}
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 2 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -550,11 +624,12 @@ A shell prompt on a shared machine.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+login successful and a shell prompt is available.
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 3 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 3 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -577,11 +652,14 @@ No errors are shown.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+The 23.0.0 stack is available in /software/lsstsw/stack\_v23\_rc5/\\
+The executed command was:\\[2\baselineskip]{[}yusra@lsst-devl01{]}\$
+source /software/lsstsw/stack\_v23\_rc5/loadLSST.bash
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 4 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 4 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -605,6 +683,16 @@ The provided version number should be available in the shared stack.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+This installation includes all 5 release candidates for v23.0.0,
+including the final release candidate, rc5, which is equal to
+v23.0.0.\\[2\baselineskip](lsst-scipipe) {[}yusra@lsst-devl01{]}\$ eups
+list lsst\_distrib\\
+\hspace*{0.333em} ~22.0.1-3-g7ae64ea+20107aebcc ~ ~ ~ ~~v23\_0\_0\_rc3\\
+\hspace*{0.333em} ~22.0.1-3-g7ae64ea+4740292584 ~ ~ ~ ~~v23\_0\_0\_rc4\\
+\hspace*{0.333em} ~22.0.1-3-g7ae64ea+55a90f3480 ~ ~ ~ ~~v23\_0\_0\_rc2\\
+\hspace*{0.333em} ~22.0.1-3-g7ae64ea+77325d5914 ~ ~ ~ ~~v23\_0\_0\_rc1\\
+\hspace*{0.333em} ~22.0.1-3-g7ae64ea+e2b4167800 ~ ~ ~ ~~current
+v23\_0\_0\_rc5\\[2\baselineskip]
 
 }
 
@@ -629,7 +717,7 @@ This test will check:
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -638,7 +726,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -654,11 +742,12 @@ The website is displayed.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+The website https://pipelines.lsst.io is displayed
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 2 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -681,11 +770,16 @@ The documentation for the release under test is displayed.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+https://pipelines.lsst.io is for the release under test and clearly
+states: ''This documentation covers version \textbf{v23\_0\_0''~}\\
+It was also simple to navigate to ``Other Versions'', and click on
+v23\_0\_0 and land on the permanent page address for this release:
+https://pipelines.lsst.io/v/v23\_0\_0/index.html\\[2\baselineskip]
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 3 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 3 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -714,11 +808,26 @@ The user is satisfied that the required information is available.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+The documentation for the following are all available on the front page
+or linked from the front page:
+
+\begin{itemize}
+\tightlist
+\item
+  Release notes:
+  https://pipelines.lsst.io/v/v23\_0\_0/releases/v23\_0\_0.html\#release-latest
+\item
+  Installation instructions:
+  https://pipelines.lsst.io/v/v23\_0\_0/index.html\#installation
+\item
+  Getting started information:
+  https://pipelines.lsst.io/v/v23\_0\_0/index.html\#getting-started
+\end{itemize}
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 4 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 4 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -735,11 +844,15 @@ The user is satisfied that the report is available.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+The characterization report for this
+release,~\href{https://dmtr-351.lsst.io/}{Characterization Metric Report
+(DMTR-351)}, ~is clearly linked from the Release Notes:
+~https://pipelines.lsst.io/v/v23\_0\_0/releases/v23\_0\_0.html\#release-latest
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 5 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 5 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -760,6 +873,7 @@ computed by validate\_drp, are described in the report.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+The Characterization Report includes the expected metrics.
 
 }
 
